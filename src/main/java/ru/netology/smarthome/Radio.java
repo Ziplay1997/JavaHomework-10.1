@@ -42,7 +42,7 @@ public class Radio {
     }
 
     public void prevRadioStation() {
-        if (currentRadioStation > 1) {
+        if (currentRadioStation > 0) {
             currentRadioStation = currentRadioStation - 1;
         }
         if (currentRadioStation == 0) {
