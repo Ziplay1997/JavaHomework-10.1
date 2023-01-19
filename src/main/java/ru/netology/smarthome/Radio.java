@@ -1,8 +1,20 @@
 package ru.netology.smarthome;
-public class Radio {
-    public int currentVolume; // Текущая громкость
-    public int currentRadioStation; // Текущая радиостанция
 
+public class Radio {
+    private int currentVolume; // Текущая громкость
+    private int currentRadioStation; // Текущая радиостанция
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        currentVolume = newCurrentVolume;
+    }
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
         if (newCurrentRadioStation < 0) {
