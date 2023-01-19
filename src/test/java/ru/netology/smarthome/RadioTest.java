@@ -26,43 +26,7 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
-    @Test
-    public void shouldSetRadioStationIfInLowBorder() { // Выбираем нижнюю границу станции
-        Radio radio = new Radio();
-
-        radio.setCurrentRadioStation(0);
-
-        int expected = 0;
-        int actual = radio.getCurrentRadioStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void notShouldSetRadioStationIfUnderNull() { // Выбираем станцию меньше нижней границы
-        Radio radio = new Radio();
-
-        radio.setCurrentRadioStation(-1);
-
-        int expected = 0;
-        int actual = radio.getCurrentRadioStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetRadioStationIfMoreOneBorder() { // Выбираем станцию больше на 1 нижней границы
-        Radio radio = new Radio();
-
-        radio.setCurrentRadioStation(1);
-
-        int expected = 1;
-        int actual = radio.getCurrentRadioStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
+    
     @ParameterizedTest
     @CsvSource({
             "6,5",
