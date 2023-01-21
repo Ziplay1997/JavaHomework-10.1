@@ -1,14 +1,28 @@
 package ru.netology.smarthome;
 
 public class Radio {
-    private int currentVolume = 0; // Текущая громкость
-    private int currentRadioStation; // Текущая радиостанция
-
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
-
     private int maxRadioStation = 9;
     private int minRadioStation = 0;
+    private int currentVolume = 0; // Текущая громкость
+    private int currentRadioStation = 0; // Текущая радиостанция
+
+    public Radio(int newMaxRadioStation) {
+        this.maxRadioStation = newMaxRadioStation - 1;
+    }
+
+    public Radio() {
+
+    }
+
+    public int getMaxRadioStation() {
+        return maxRadioStation;
+    }
+
+    public int getMinRadioStation() {
+        return minRadioStation;
+    }
 
     public int getCurrentVolume() {
         return currentVolume;
