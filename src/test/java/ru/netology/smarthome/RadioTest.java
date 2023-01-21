@@ -9,6 +9,55 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvSource({
+            "15,14",
+            "1,0",
+            "2,1",
+            "29,28",
+            "28,27",
+            "0,29"
+    })
+    public void shouldIncreaseRadioStationIfUserSetMaxValueStation(int expected, int station) {
+        Radio radio = new Radio(30);
+        radio.setCurrentRadioStation(station);
+
+        radio.nextRadioStation();
+
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "14,15",
+            "29,0",
+            "0,1",
+            "1,2",
+            "28,29",
+            "27,28"
+    })
+    public void shouldDecreaseRadioStationIfUserSetMaxValueStation(int expected, int station) {
+        Radio radio = new Radio(30);
+        radio.setCurrentRadioStation(station);
+
+        radio.prevRadioStation();
+
+        int actual = radio.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void ifUserSetMaxValueStation() {
+        Radio radio = new Radio(50);
+
+        Assertions.assertEquals(0, radio.getMinRadioStation());
+        Assertions.assertEquals(49, radio.getMaxRadioStation());
+
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "5,5",
             "0,0",
             "0,-1",
@@ -26,15 +75,15 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-    
+
     @ParameterizedTest
     @CsvSource({
-            "6,5",
+            "51,50",
             "1,0",
             "2,1",
-            "9,8",
-            "10,9",
-            "10,10"
+            "99,98",
+            "100,99",
+            "100,100"
     })
     public void shouldIncreaseVolumeIfBorderValue(int expected, int volume) { // Тесты граничных значений при увеличении звука
         Radio radio = new Radio();
@@ -51,9 +100,10 @@ public class RadioTest {
     @CsvSource({
             "0,0",
             "0,1",
-            "4,5",
-            "9,10",
-            "8,9"
+            "1,2",
+            "50,51",
+            "99,100",
+            "98,99"
     })
     public void shouldDecreaseVolumeIfBorderValue(int expected, int volume) { // Тесты граничных значений при уменьшении звука
         Radio radio = new Radio();
@@ -78,7 +128,7 @@ public class RadioTest {
         Radio radio = new Radio();
 
         radio.setCurrentRadioStation(station);
-        ;
+
         radio.nextRadioStation();
 
         int actual = radio.getCurrentRadioStation();
@@ -109,7 +159,7 @@ public class RadioTest {
     public void notShouldSetVolumeIfValueMoreMax() {
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
         int expected = 0;
 
         int actual = radio.getCurrentVolume();
